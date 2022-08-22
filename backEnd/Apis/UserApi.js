@@ -3,7 +3,8 @@ const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const salt = bcrypt.genSaltSync(10); 
 const jwt = require("jsonwebtoken"); 
-const secret = require("../../backEnd/config/keys");
+// const secret = require("../../backEnd/config/keys");
+require('dotenv').config({path: __dirname + '../.env'})
 const passport = require("passport"); 
 const UserModel = require("../Modules/userModel"); 
 const ValidateReqest = require("../../backEnd/Validation/Regester_Validation");
@@ -90,7 +91,7 @@ const Login = (async(req, res) => {
                     
                     console.log("payload" + " " + JSON.stringify( payload));
                   
-                   jwt.sign(payload, secret.secrete, {expiresIn:8000}  , (err, token) => {
+                   jwt.sign(payload, process.env.secretOrKey , {expiresIn:8000}  , (err, token) => {
                        console.log("token" + " " + token);
                        return res.status(200).json({ mytoken: "Bearer" + " " + token });
                        

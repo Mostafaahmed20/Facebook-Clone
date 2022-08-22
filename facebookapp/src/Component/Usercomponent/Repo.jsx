@@ -58,15 +58,16 @@ class Repo extends React.Component{
                     
                         <div>
                             <ul className="unOrderList">
-                                {this.state.repo.items.map((v) => (
+                                {this.state.repo.items.map((v , i ) => (
                                     <div className="Card">
-
+                                       
+                                        <li>#{i+1}</li>
+                                        <li>{v.owner.login}</li>
                                         <li className="List">{v.name}</li>
                                         <li>{v.full_name}</li>
-                                        <li>{v.owner.login}</li>
                                         <img className="img" src={v.owner.avatar_url}/>
+                                        <li style={{color:"orange" , wordBreak:"break-word"}}>{v.description}</li>
                                         <li>{v.owner.followers_url}</li>
-                                        <li>{v.description}</li>
                                 
 
                                     </div>

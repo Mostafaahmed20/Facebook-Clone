@@ -1,15 +1,16 @@
 const express = require("express");  
-const os = require("os");
 const app = express();   
 const passport = require("passport"); 
 const cors = require("cors");
 const bodyparser = require("body-parser");       
 const mongoose = require("mongoose");
-const DB = require("./config/keys");                  //// our file for configration keep to your mind to put it inside .gitgnore file
-const Routes = require("./Routes/route")                             //// this is the file route for every function
-const port = DB.PORT || 5000;                              // take the value for the posrt from the /config/.gonfig.js 
+// const DB = require("./config/keys");
+const Routes = require("./Routes/route")                           
+const port = process.env.PORT || 5000;
+require('dotenv').config()                            
+
 const profile = require("./Apis/profileApi");
-mongoose.connect(DB.myDb).then(( ) => console.log(`app is connected `)).catch(err=>console.log(err)); // connect DB 
+mongoose.connect(process.env.MONGOURI).then(( ) => console.log(`app is connected `)).catch(err=>console.log(err)); // connect DB 
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({extended:false}))           
 
