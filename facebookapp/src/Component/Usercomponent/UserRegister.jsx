@@ -1,5 +1,5 @@
 import React from "react"; 
-import Regester from "./FetchUser";
+import Regester from "../../Fetcing/Regester";
 
 
 export default class RegisterComponent extends React.Component{

@@ -1,10 +1,6 @@
 import React from "react"; 
 require("./index.css");
-import RegisterComponent  from "./Component/Usercomponent/UserRegister"
-import LoginComponent  from "./Component/Usercomponent/UserLogin"
-
-import Repo from "./Component/Usercomponent/Repo"
-
+import Maincomponent from "./Component/Usercomponent/MainComponent"; 
 
 export default  function App() {
   
@@ -12,9 +8,7 @@ export default  function App() {
 
   return (
     <div>
-      <RegisterComponent />
-      <LoginComponent />
-      <Repo/>
+      <Maincomponent/>
     </div>
   )
  }

@@ -1,5 +1,5 @@
 import React from "react";
-import RepoFetch from "./FetchUser";
+import RepoFetch from "../../Fetcing/FetchRepos";
 
 
 function HelperFunc(props) {
@@ -24,7 +24,7 @@ function HelperFunc(props) {
 
 
 
-class Repo extends React.Component{
+class Repocomponent extends React.Component{
 
     state = {
         Langs: ["ALL", "mongoDB", "React.js", "Express", "Node.js", "Javascript"], 
@@ -64,11 +64,9 @@ class Repo extends React.Component{
                                         <li>#{i+1}</li>
                                         <li>{v.owner.login}</li>
                                         <li className="List">{v.name}</li>
-                                        <li>{v.full_name}</li>
                                         <img className="img" src={v.owner.avatar_url}/>
                                         <li style={{color:"orange" , wordBreak:"break-word"}}>{v.description}</li>
-                                        <li>{v.owner.followers_url}</li>
-                                
+                                        
 
                                     </div>
                                ))}
@@ -81,4 +79,4 @@ class Repo extends React.Component{
     }
 }
 
-export default Repo; 
+export default Repocomponent; 

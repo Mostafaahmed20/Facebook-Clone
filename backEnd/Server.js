@@ -33,4 +33,4 @@ app.get("/", (req, res) => {
 
 
 
-app.listen(port , ()=>console.log(`app is listen to http://localhost:${port}/`))
+app.listen(process.env.PORT , ()=>console.log(`app is listen to http://localhost:${process.env.PORT}/`))
