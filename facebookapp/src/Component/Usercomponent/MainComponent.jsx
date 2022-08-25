@@ -2,7 +2,9 @@ import React from "react"
 import Repocomponent from "./Repo";
 import LoginComponent from "./UserLogin"; 
 import RegisterComponent from "./UserRegister"; 
+import Page404 from "./Page404";
 import App from "../../App"
+
 import {  Link, Route,  Routes } from "react-router-dom"; 
 
 export default function Maincomponent() {
@@ -17,8 +19,8 @@ export default function Maincomponent() {
             <Routes>
             <Route path="/Repos" element = {<Repocomponent/>} />
             <Route path="/Login" element = {<LoginComponent/>} />
-            <Route path="/Regester" element = {<RegisterComponent/>} />
-            
+                <Route path="/Regester" element={<RegisterComponent />} />
+            <Route path="*" element = {<Page404/>}/>    
             </Routes>    
         </div>
         

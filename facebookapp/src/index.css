@@ -103,3 +103,8 @@ flex-wrap: wrap;
   align-items: center;
   cursor: pointer
 }
+.notfound{
+  background-image: url("./Component/Usercomponent/404.gif");
+  width: 100%;
+  height: 100%;
+}
