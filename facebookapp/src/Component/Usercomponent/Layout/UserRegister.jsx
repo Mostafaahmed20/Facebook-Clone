@@ -1,7 +1,8 @@
 import React from "react"; 
-import Regester from "../../Fetcing/Regester";
-
-
+import { Link } from "react-router-dom";
+import Regester from "../../../Fetcing/Regester";
+import Login from "./UserLogin";
+require("../css/style.css")
 export default class RegisterComponent extends React.Component{
     state = {
         name: "", 
@@ -49,25 +50,64 @@ HandelPassword = (e) => {
     e.preventDefault()
     }
 
-// name, 
-// age, 
-// Avatar , 
-// email, 
-// password: bcryptpass
-
 render() {
 
 
     return (
         <div>
-    <header>Register</header>
     
-                <input type="text" placeholder="Name" value={this.state.name} onChange={this.HandelName } />
+    <section className="container">
+
+      <h1 className="large text-primary">Sign Up</h1>
+      <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
+      <form className="form">
+       
+        <div className="form-group">
+          <small className="form-text"
+            >This site uses Gravatar so if you want a profile image, use a
+            Gravatar email</small
+          >
+        </div>
+                    <div className="form-group">
+    
+        <input type="text" placeholder="Name" value={this.state.name} onChange={this.HandelName } />
                 <input type="text" placeholder="age" value={this.state.age } onChange={this.HandelAge } />
                 <input type="text" placeholder="email" value={this.state.email } onChange={this.HandelEmail} />
-                <input type="text" placeholder="Password" value={this.state.password } onChange={this.HandelPassword} />
-<input type="submit" value="submit" onClick={this.HandelSubmit}/>                
+                <input type="password" placeholder="Password" value={this.state.password } onChange={this.HandelPassword} />
+<input type="submit" className="btn btn-primary" value="submit" onClick={this.HandelSubmit}/>
+    
+        </div>
+        
+                    
+          
+      </form>
+      <h5 className="my-1" style={{color:"black"}}>
+        Already have an account? <Link to="/Login">Sign In </Link>
+      </h5>
+    </section>
  
+ 
+ 
+ 
+    </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    )
+    }
+    }
+ 
+ 
+ 
+ 
+ 
+            {/* <header>Register</header>
+    
             {this.state.UserData == null
                 ? <h3>Laoading.....</h3> :
                 
@@ -77,8 +117,4 @@ render() {
                     <h3>Age:{this.state.UserData.data.age}</h3>
                     </div>
             }
-     
-        </div>
-        )
-    }
-}
+      */}

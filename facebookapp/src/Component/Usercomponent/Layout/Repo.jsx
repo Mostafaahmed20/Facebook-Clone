@@ -1,11 +1,21 @@
 import React from "react";
-import RepoFetch from "../../Fetcing/FetchRepos";
+import { Link } from "react-router-dom";
+import RepoFetch from "../../../Fetcing/FetchRepos";
 
 
 function HelperFunc(props) {
 
     return (
+        
         <div className="Un-orderlist">
+         <nav className="navbar bg-dark">
+          <h1>
+        <Link to ="/"><i className="fas fa-code"></i>Facebook</Link>
+      </h1>
+          <ul>
+            <Link to = "/" >Home</Link>
+      </ul>
+        </nav>     
             <h3>You Had selected {props.SelectedLang}</h3>
             {props.Data.map((v , i ) => (
                 <ul  key={i}>
@@ -24,7 +34,7 @@ function HelperFunc(props) {
 
 
 
-class Repocomponent extends React.Component{
+class Repo extends React.Component{
 
     state = {
         Langs: ["ALL", "mongoDB", "React.js", "Express", "Node.js", "Javascript"], 
@@ -50,7 +60,7 @@ class Repocomponent extends React.Component{
         
 
         return (
-            <div>
+            <div className="Repo" style={{ color: "black" , marginTop:"100px"}}>
 
                 <HelperFunc Data={this.state.Langs }  SelectedLang = {this.state.selected} SelectedLangFunc = {this.HandelSelection} />            
                 <div className="container">
@@ -79,4 +89,4 @@ class Repocomponent extends React.Component{
     }
 }
 
-export default Repocomponent; 
+export default Repo; 

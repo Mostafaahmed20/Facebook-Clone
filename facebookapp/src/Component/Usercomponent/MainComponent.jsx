@@ -1,29 +1,20 @@
-import React from "react"
-import Repocomponent from "./Repo";
-import LoginComponent from "./UserLogin"; 
-import RegisterComponent from "./UserRegister"; 
-import Page404 from "./Page404";
-import App from "../../App"
+import React from 'react'
+import NavPar from "./Layout/Navpar";
+import LandingComponent from "../Usercomponent/Layout/LandingComponent"
+import Footer from "../Usercomponent/Layout/Fotter"
+import { Link, Route, Routes } from 'react-router-dom';
 
-import {  Link, Route,  Routes } from "react-router-dom"; 
-
-export default function Maincomponent() {
-    return (
-        <div className="Un-orderlist-Dashboard">
-
-            <Link className="LangsList-Dashboard" to="/Repos">Repos</Link>
-            <Link className="LangsList-Dashboard" to="/Login">Login</Link>
-            <Link className="LangsList-Dashboard" to="/Regester">Regester</Link>
-
-
-            <Routes>
-            <Route path="/Repos" element = {<Repocomponent/>} />
-            <Route path="/Login" element = {<LoginComponent/>} />
-                <Route path="/Regester" element={<RegisterComponent />} />
-            <Route path="*" element = {<Page404/>}/>    
-            </Routes>    
-        </div>
-        
-
-    )
+function MainComponent() {
+  return (
+      <div className='Container'>
+          <NavPar />
+          <LandingComponent />
+          <Footer />
+          
+          
+      </div>
+      
+  )
 }
+
+export default MainComponent
