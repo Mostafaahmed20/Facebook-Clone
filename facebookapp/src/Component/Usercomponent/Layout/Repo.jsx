@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RepoFetch from "../../../Fetcing/FetchRepos";
-
+import {Card , CardBody , CardTitle , CardSubtitle  , CardLink , CardText } from "reactstrap"
 
 function HelperFunc(props) {
 
@@ -62,16 +62,61 @@ class Repo extends React.Component{
                         <div>
                             <ul className="unOrderList">
                                 {this.state.repo.items.map((v , i ) => (
-                                    <div className="Card">
+                                    
+                                    <Card
+  style={{
+                                            width: '18rem',
+                                            height:"400px",
+                                            backgroundColor: "black",
+                                            margin: "5px",
+                                            color: "orange",
+                                            wordBreak: "break-word",
+
+     
+  }}
+>
+  <CardBody>
+    <CardTitle tag="h5">
+      #{i+1}
+    </CardTitle>
+    <CardSubtitle
+      className="mb-2 text-muted"
+      tag="h6"
+    >
+      {v.full_name}
+    </CardSubtitle>
+  </CardBody>
+  <img
+    alt="Card cap"
+    className="img" src={v.owner.avatar_url}
+    width="100%"
+  />
+  <CardBody>
+                                            <CardText>
+                                                {v.description}
+    </CardText>
+    <CardLink style={{color:"gray"}} href={v.owner.url} >
+      Card url
+    </CardLink>
+    <CardLink style={{color:"gray"}} href={v.owner.repos_url}>
+    repos_url
+    </CardLink>
+  </CardBody>
+</Card>
+
+
+
+
+                                    // <div className="Card">
                                        
-                                        <li style={{color:"whitesmoke"}}>#{i+1}</li>
-                                        <li>{v.owner.login}</li>
-                                        <li className="List">{v.name}</li>
-                                        <img className="img" src={v.owner.avatar_url}/>
-                                        <li style={{color:"orange" , wordBreak:"break-word"}}>{v.description}</li>
+                                    //     <li style={{color:"whitesmoke"}}>#{i+1}</li>
+                                    //     <li>{v.owner.login}</li>
+                                    //     <li className="List">{v.name}</li>
+                                    //     <img className="img" src={v.owner.avatar_url}/>
+                                    //     <li style={{color:"orange" , wordBreak:"break-word"}}>{v.description}</li>
                                         
 
-                                    </div>
+                                    // </div>
                                ))}
                             </ul>
                     </div>

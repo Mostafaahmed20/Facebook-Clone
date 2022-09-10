@@ -7,7 +7,7 @@ import Notfound from "../Layout/Page404"
 import LandingComponent from './LandingComponent'
 import Footer from './Fotter'
 import { Navbar, NavbarBrand } from 'reactstrap'
-import mySvg from "../../../img/reacteurope.svg";
+import mySvg from "../css/reacteurope2.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Home = () => {
   return (
