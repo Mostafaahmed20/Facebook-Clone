@@ -1,15 +1,16 @@
 import React from "react"; 
 import { Link } from "react-router-dom";
 import Regester from "../../../Fetcing/Regester";
-import Login from "./UserLogin";
-require("../css/style.css")
+import { Navbar, NavbarBrand } from 'reactstrap'
+
 export default class RegisterComponent extends React.Component{
     state = {
         name: "", 
         age: "", 
         email: "", 
         password: "", 
-        UserData:null
+        error:null , 
+        UserData:null 
 }
 
     
@@ -44,7 +45,9 @@ HandelPassword = (e) => {
                 UserData:data
             })
         }).catch((err) => {
-            return <h3>{err}</h3>
+            this.setState({
+               error:err
+           })
         })
 
     e.preventDefault()
@@ -55,7 +58,10 @@ render() {
 
     return (
         <div>
-    
+
+            <Navbar className='my-1' color='dark' dark>
+<Link to = "/" >Back to Home</Link>               
+    </Navbar>            
     <section className="container">
 
       <h1 className="large text-primary">Sign Up</h1>
@@ -77,13 +83,12 @@ render() {
 <input type="submit" className="btn btn-primary" value="submit" onClick={this.HandelSubmit}/>
     
         </div>
-        
-                    
+           
           
       </form>
-      <h5 className="my-1" style={{color:"black"}}>
+      <p className="my-1" >
         Already have an account? <Link to="/Login">Sign In </Link>
-      </h5>
+      </p>
     </section>
  
  

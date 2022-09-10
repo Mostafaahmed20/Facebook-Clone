@@ -6,14 +6,15 @@ import Repo from "../Layout/Repo"
 import Notfound from "../Layout/Page404"
 import LandingComponent from './LandingComponent'
 import Footer from './Fotter'
-
+import { Navbar, NavbarBrand } from 'reactstrap'
+import mySvg from "../../../img/reacteurope.svg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Home = () => {
   return (
     <div>
-      <h3>Home</h3>
       <LandingComponent />
 
-      <Footer/>
+      <Footer/> 
     </div>
   )
 }
@@ -27,18 +28,33 @@ export default function NavPar() {
   </head>
       <body>
         
-    <nav className="navbar bg-dark">
-          <h1>
-        <Link to ="/"><i className="fas fa-code"></i>Facebook</Link>
-      </h1>
+    <Navbar className='my-1' color='dark' dark>
+          <NavbarBrand href="/">
+    <img
+        alt="logo"
+        src={mySvg}
+        style={{
+          height: 50,
+          width: 50,
+          backgroundColor: "tomato",
+          borderRadius: "50%",
+          opacity: .5,
+              }}
+      />
+            <span style={{ color: "whitesmoke", fontSize: "25px", fontFamily: "serif" }}> &#174;</span>    
+    </NavbarBrand>
+          
+
           <ul>
-            <Link to = "/" >Home</Link>
+          <i data-fa-symbol="favorite" class="fa-solid fa-star fa-fw"></i>
+            
+             
             <Link to="/Developers">Developers</Link>
         <Link to="/Login">Login</Link>
             <Link to="/Register">Register</Link>
             <Link to="/Repo">Repo</Link>
       </ul>
-        </nav>        
+        </Navbar>        
   </body>
 
       

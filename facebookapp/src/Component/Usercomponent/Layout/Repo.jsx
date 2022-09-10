@@ -8,14 +8,7 @@ function HelperFunc(props) {
     return (
         
         <div className="Un-orderlist">
-         <nav className="navbar bg-dark">
-          <h1>
-        <Link to ="/"><i className="fas fa-code"></i>Facebook</Link>
-      </h1>
-          <ul>
-            <Link to = "/" >Home</Link>
-      </ul>
-        </nav>     
+           
             <h3>You Had selected {props.SelectedLang}</h3>
             {props.Data.map((v , i ) => (
                 <ul  key={i}>
@@ -71,7 +64,7 @@ class Repo extends React.Component{
                                 {this.state.repo.items.map((v , i ) => (
                                     <div className="Card">
                                        
-                                        <li>#{i+1}</li>
+                                        <li style={{color:"whitesmoke"}}>#{i+1}</li>
                                         <li>{v.owner.login}</li>
                                         <li className="List">{v.name}</li>
                                         <img className="img" src={v.owner.avatar_url}/>
