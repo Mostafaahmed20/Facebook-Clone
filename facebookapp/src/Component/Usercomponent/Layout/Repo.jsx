@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RepoFetch from "../../../Fetcing/FetchRepos";
-import {Navbar , Card , CardBody , CardTitle , CardSubtitle  , CardLink , CardText } from "reactstrap"
+import {Navbar , Card , CardBody , CardTitle , CardSubtitle  , CardLink , CardText , Button , Spinner } from "reactstrap"
 
 function HelperFunc(props) {
 
@@ -62,7 +62,17 @@ class Repo extends React.Component{
                 
                 <HelperFunc Data={this.state.Langs }  SelectedLang = {this.state.selected} SelectedLangFunc = {this.HandelSelection} />            
                 <div className="container">
-                    {this.state.repo == null ? <h3>Loading ,,,,</h3> : 
+                    {this.state.repo == null ? <Button
+  color="primary"
+  disabled
+>
+  <Spinner size="sm">
+    Loading...
+  </Spinner>
+  <span>
+    {' '}Loading
+  </span>
+</Button> : 
                     
                         <div>
                             <ul className="unOrderList">
