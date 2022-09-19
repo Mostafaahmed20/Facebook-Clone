@@ -1,20 +1,21 @@
-import React from "react";
+import React  ,  {useState} from "react";
 import { Link } from "react-router-dom";
 import RepoFetch from "../../../Fetcing/FetchRepos";
 import {Navbar , Card , CardBody , CardTitle , CardSubtitle  , CardLink , CardText , Button , Spinner } from "reactstrap"
+import { useEffect } from "react";
 
-function HelperFunc(props) {
+function HelperFunc({Data , SelectedLang , SelectedLangFunc }) {
 
     return (
         
         <div className="Un-orderlist">
            
-            <h3>You Had selected {props.SelectedLang}</h3>
-            {props.Data.map((v , i ) => (
+            <h3>You Had selected {SelectedLang}</h3>
+            {Data.map((v , i ) => (
                 <ul  key={i}>
-                    <li className="LangsList" style={props.SelectedLang == v ? {color:"orange"}:{color:"black"}    
+                    <li className="LangsList" style={SelectedLang == v ? {color:"orange"}:{color:"black"}    
                 
-                } onClick={() => props.SelectedLangFunc(v)} key={i}>{v}</li>
+                } onClick={() => SelectedLangFunc(v)} key={i}>{v}</li>
                 </ul>
             ))}
         </div>
@@ -27,31 +28,46 @@ function HelperFunc(props) {
 
 
 
-class Repo extends React.Component{
+function Repo (){
+  const[Langs , setLangs ] = useState(["ALL", "mongoDB", "React.js", "Express", "Node.js", "Javascript"]); 
+  const [selected, Setselected] = useState("ALL"); 
+  const [repo, SetRepo] = useState(null); 
+  
+  const HandelSelection = (e) => {
+    Setselected(e); 
 
-    state = {
-        Langs: ["ALL", "mongoDB", "React.js", "Express", "Node.js", "Javascript"], 
-        selected: "ALL", 
-        repo:null 
-        
-}
-
-    HandelSelection = (e) => {
-        this.setState({
-            selected: e, 
-            repo:null 
-        })
-        RepoFetch(e).then(data => {
-            this.setState({
-                repo:data
-            })
-        })
-
-    }
+  } 
+  
+    useEffect(() => {
+  
+      RepoFetch(selected).then(data=> SetRepo(data))
     
-    render() {
-        
+     
+      
+  } , [selected])
 
+
+//     state = {
+//         Langs: ["ALL", "mongoDB", "React.js", "Express", "Node.js", "Javascript"], 
+//         selected: "ALL", 
+//         repo:null 
+        
+// }
+
+//     HandelSelection = (e) => {
+//         this.setState({
+//             selected: e, 
+//             repo:null 
+//         })
+//         RepoFetch(e).then(data => {
+//             this.setState({
+//                 repo:data
+//             })
+//         })
+
+//     }
+    
+    
         return (
             
             <div className="Repo" style={{ color: "black" }}>
@@ -60,9 +76,9 @@ class Repo extends React.Component{
 <Link to = "/" >Back to Home</Link>               
     </Navbar>     
                 
-                <HelperFunc Data={this.state.Langs }  SelectedLang = {this.state.selected} SelectedLangFunc = {this.HandelSelection} />            
+                <HelperFunc Data={Langs }  SelectedLang = {selected} SelectedLangFunc = {HandelSelection} />            
                 <div className="container">
-                    {this.state.repo == null ? <Button
+                    {repo == null ? <Button
   color="primary"
   disabled
 >
@@ -76,7 +92,7 @@ class Repo extends React.Component{
                     
                         <div>
                             <ul className="unOrderList">
-                                {this.state.repo.items.map((v , i ) => (
+                                {repo.items.map((v , i ) => (
                                     
                                     <Card
   style={{
@@ -119,27 +135,14 @@ class Repo extends React.Component{
   </CardBody>
 </Card>
 
-
-
-
-                                    // <div className="Card">
-                                       
-                                    //     <li style={{color:"whitesmoke"}}>#{i+1}</li>
-                                    //     <li>{v.owner.login}</li>
-                                    //     <li className="List">{v.name}</li>
-                                    //     <img className="img" src={v.owner.avatar_url}/>
-                                    //     <li style={{color:"orange" , wordBreak:"break-word"}}>{v.description}</li>
-                                        
-
-                                    // </div>
-                               ))}
+          ))}
                             </ul>
                     </div>
                     }
                 </div>
             </div>
         )
-    }
+    
 }
 
 export default Repo; 

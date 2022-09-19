@@ -8,7 +8,6 @@ import LandingComponent from './LandingComponent'
 import Footer from './Fotter'
 import { Navbar, NavbarBrand } from 'reactstrap'
 import mySvg from "../css/reacteurope2.svg";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Home = () => {
   return (
     <div>
@@ -46,7 +45,7 @@ export default function NavPar() {
           
 
           <ul>
-          <i data-fa-symbol="favorite" class="fa-solid fa-star fa-fw"></i>
+          <i data-fa-symbol="favorite" className="fa-solid fa-star fa-fw"></i>
             
              
             <Link to="/Developers">Developers</Link>
