@@ -1,30 +1,42 @@
-import React from "react"; 
+import React, { useReducer } from "react"; 
 import { Link } from "react-router-dom";
 import loginUser from "../../../Fetcing/Login"
 import {Navbar} from "reactstrap"
 
 
-export default class Login extends React.Component{
-
-  state = {
+export default function  Login (){
+  const reduce = (prev, next) => ({ ...prev, ...next }); 
+  const [{ email, password }, SetData] = useReducer(reduce, {
     email: "", 
-    password: "", 
-    UserLogin:null
-  }
-
-  HandelEmail = (e) => {
-    this.setState({
-      email:e.target.value
-    })
+    password : ""
+  });  
+  
+  const HandelChange = (e) => {
+    const val = e.target.value; 
+    const Tag = e.target.name; 
+    SetData({[Tag]:val})
 }
 
-  HandelPassword = (e) => {
-    this.setState({
-      password:e.target.value
-    })
-  }
-  HandelSubmit = (e) => {
-    const { email, password } = this.state; 
+  // state = {
+  //   email: "", 
+  //   password: "", 
+  //   UserLogin:null
+  // }
+
+//   HandelEmail = (e) => {
+//     this.setState({
+//       email:e.target.value
+//     })
+// }
+
+//   HandelPassword = (e) => {
+//     this.setState({
+//       password:e.target.value
+//     })
+//   }
+
+
+ const HandelSubmit = (e) => { 
     loginUser(email, password).then(data => {
       this.setState({
         UserLogin:data
@@ -34,10 +46,7 @@ export default class Login extends React.Component{
   }
   
 
-    render() {
-
-
-
+    
 
 
       return (
@@ -57,14 +66,13 @@ export default class Login extends React.Component{
       </div>
       <h1 className="large text-primary">Sign In</h1>
       <p className="lead"><i className="fas fa-user"></i> Sign into Your Account</p>
-      <form className="form" onSubmit={this.HandelSubmit}>
+      <form className="form" onSubmit={HandelSubmit}>
         <div className="form-group">
           <input
             type="email"
             placeholder="Email Address"
             name="email"
-                    value={this.state.email}
-                    onChange= {this.HandelEmail}
+                    onChange= {HandelChange }
           />
         </div>
         <div className="form-group">
@@ -72,8 +80,7 @@ export default class Login extends React.Component{
             type="password"
             placeholder="Password"
                     name="password"
-                    value={this.state.password}
-                    onChange = {this.HandelPassword}
+                    onChange = {HandelChange}
           />
         </div>
         <input type="submit" className="btn btn-primary" value="submit" />
@@ -87,5 +94,5 @@ export default class Login extends React.Component{
  
             </div>
         )
-    }
+    
 }
